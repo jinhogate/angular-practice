@@ -1,0 +1,23 @@
+<div class="col-md-12">
+    <p [ngStyle]="{
+        'font-family': police,
+        'font-size': getCorrectSize(),
+        'text-align':alignValue
+    }">Bonjour {{name|uppercase}}</p>
+    <label for="name">Name:</label>
+    <input id="name" type="text" class="form-control" [(ngModel)]="name">
+    <label for="police">Police à appliquer:</label>
+    <select name="police" id="police" class="form-control" [(ngModel)]="police">
+        <option *ngFor="let police of polices" [value]="police.valeur">{{police.nom}}</option>
+    </select>
+    <label for="taille">Taille:</label>
+    <input type="text" class="form-control" [(ngModel)]="taille">
+    <div>
+        <h3>Allignement</h3>
+        <div class="radio" *ngFor="let align of aligns">
+            <label>
+                <input type="radio" name="align" [value]="align" [(ngModel)]="alignValue">{{align}}
+            </label>
+        </div>
+    </div>
+</div>

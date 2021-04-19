@@ -1,0 +1,36 @@
+<div class="col-md-12">
+    <!--calcul et résultat-->
+    <form class="form-inline" (ngSubmit)="onCalculer(f)" #f="ngForm">
+        <h3>Effectuer une opération</h3>
+        <div class="form-group">
+            <label for="nombre1" class="sr-only">Nombre1:</label>
+            <input type="nombre1" class="form-control" id="nombre1" placeholder="Nombre1" name="nombre1" ngModel>
+        </div>
+        <div class="form-group">
+            <label for="operation" class="sr-only">Operations:</label>
+            <select id="operation" class="form-control" name="operation" ngModel>
+                <option [value]="" disabled>Choisir une opération</option>
+                <option *ngFor="let op of operations" [value]="op">{{op}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nombre2" class="sr-only">Nombre2:</label>
+            <input type="nombre2" class="form-control" id="nombre2" placeholder="Nombre2" name="nombre2" ngModel>
+        </div>
+        <button type="submit" class="btn btn-success">Calculer</button>
+    </form>
+    <div>
+        <h3><span class="label label-primary">Résultat = {{resultat}} </span></h3>
+    </div> <br>
+    <div>
+        <h3>Historiques des opérations</h3>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let histo of historiqueList">
+                <span>Heure: {{histo.heure|date:'hh:mm:ss'}}</span> <br>
+                <span>Opération: {{histo.operation}}</span> <br>
+                <span>Résultat: {{histo.resultat}}</span> 
+            </li>
+        </ul>
+        <button (click)="onReset()">Reset</button>
+    </div>
+</div>
